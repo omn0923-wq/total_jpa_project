@@ -1,19 +1,20 @@
 spring:
   application:
+    # \uD504\uB85C\uC81D\uD2B8 \uC774\uB984
     name: total_jpa_back
 
-datasource:
-  # MySQL \uB4DC\uB77C\uC774\uBC84
-  driver-class-name: com.mysql.cj.jdbc.Driver
+  datasource:
+    # MySQL \uB4DC\uB77C\uC774\uBC84
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
-  # DB \uC5F0\uACB0 \uC8FC\uC18C
-  url: jdbc:mysql://localhost:3306/total_jpa
+    # DB \uC5F0\uACB0 \uC8FC\uC18C
+    url: jdbc:mysql://localhost:3306/total_jpa
 
-  # \uD658\uACBD\uBCC0\uC218 DB_USER \uC5C6\uC73C\uBA74 root \uC0AC\uC6A9
-  username: ${DB_USER:root}
+    # \uD658\uACBD\uBCC0\uC218 DB_USER \uC5C6\uC73C\uBA74 root \uC0AC\uC6A9
+    username: ${DB_USER:root}
 
-  # \uD658\uACBD\uBCC0\uC218 DB_PW \uC5C6\uC73C\uBA74 1111 \uC0AC\uC6A9
-  password: ${DB_PW:1111}
+    # \uD658\uACBD\uBCC0\uC218 DB_PW \uC5C6\uC73C\uBA74 1111 \uC0AC\uC6A9
+    password: ${DB_PW:1111}
 
   jpa:
     hibernate:
@@ -22,7 +23,7 @@ datasource:
       # update: \uBCC0\uACBD \uC0AC\uD56D\uB9CC \uBC18\uC601
       # validate: \uC5D4\uD2F0\uD2F0\uC640 \uD14C\uC774\uBE14 \uAC80\uC99D
       # none: \uC0AC\uC6A9 \uC548 \uD568
-      ddl-auto: create
+      ddl-auto: validate
 
     properties:
       hibernate:
@@ -34,6 +35,12 @@ datasource:
 
     # MySQL \uBC29\uC5B8 \uC124\uC815
     database-platform: org.hibernate.dialect.MySQLDialect
+    # JPA \uD14C\uC774\uBE14\uC744 \uC0DD\uC131\uD55C \uD6C4\uC5D0 data.sql\uC744 \uC2E4\uD589
+    defer-datasource-initialization: true
+
+#  sql:
+#    init:
+#      mode: always  # data.sql\uC744 \uD56D\uC0C1 \uC2E4\uD589
 
   autoconfigure:
     exclude:
